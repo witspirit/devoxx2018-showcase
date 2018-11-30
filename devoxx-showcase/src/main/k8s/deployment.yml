@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devoxx-showcase
+spec:
+  selector:
+    matchLabels:
+      app: devoxx-showcase
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: devoxx-showcase
+    spec:
+      containers:
+      - name: devoxx-showcase
+        image: devoxx-showcase:latest
+        imagePullPolicy: Never # This is required, since I am using the 'latest' image tag, which otherwise forces Always, which doesn't work since the image is not available publicly
+        ports:
+        - containerPort: 8080

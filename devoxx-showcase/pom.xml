@@ -108,6 +108,29 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
+			<plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>jib-maven-plugin</artifactId>
+				<version>0.10.0</version>
+				<configuration>
+					<to>
+						<image>devoxx-showcase</image>
+					</to>
+				</configuration>
+				<executions>
+					<execution>
+						<id>docker-build</id>
+						<phase>package</phase>
+						<goals>
+							<goal>buildTar</goal>
+							<!--<goal>dockerBuild</goal>--> <!-- Cannot get this to work on my Windows due to 'requested load from stdin, but stdin is empty' -->
+						</goals>
+
+					</execution>
+				</executions>
+			</plugin>
+
 		</plugins>
 	</build>
 
