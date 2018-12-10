@@ -1,0 +1,12 @@
+apiVersion: skaffold/v1beta1
+kind: Config
+build:
+  artifacts:
+    - image: devoxx-showcase
+      context: .
+      jibMaven:
+        module: devoxx-showcase
+deploy:
+  kubectl:
+    manifests:
+      - devoxx-showcase/src/main/k8s/*.yml
